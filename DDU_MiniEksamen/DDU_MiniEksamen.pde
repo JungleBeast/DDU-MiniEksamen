@@ -6,7 +6,7 @@ int pageStudent = 0;
 int pageTeacher = 0;
 int godkendt;
 
-Knap e1; Knap e2; Knap e3; Knap e4; Knap e5; Knap e6; Knap e7; Knap e8; Knap e9; Knap e10;
+Knap e1; Knap e2; Knap e3; Knap e4; Knap e5; Knap e6; Knap e7; Knap e8; Knap e9; Knap r1; Knap r2; Knap r3; Knap r4;
 
 
 
@@ -28,7 +28,14 @@ void draw(){
   text("digital diktat",20,57);
   fill(36,109,120);
   
-  
+  if(pageStudent>0 && pageTeacher==0 || pageStudent==0 && pageTeacher>0){ 
+    if(pageStudent<3){fill(500,500,500); rect(50,100,80,40); fill(1,1,1); textSize(20); text("tilbage",60,125); textSize(40); fill(36,109,120); 
+     if(pageStudent>0){
+      if(mouseX>50 && mouseX<50+80 && mouseY>100 && mouseY<100+40 && mousePressed){pageStudent--; delay(300);}
+      }
+      if(pageTeacher>0){
+      if(mouseX>50 && mouseX<50+80 && mouseY>100 && mouseY<100+40 && mousePressed){pageTeacher--; delay(300);}
+      }}}
 
   if(pageStudent == 0 && pageTeacher == 0){
     fill(300,300,300);
