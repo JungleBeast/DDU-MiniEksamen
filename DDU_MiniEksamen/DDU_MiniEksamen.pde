@@ -4,6 +4,7 @@ GuiHandler guihand = new GuiHandler();
 
 int pageStudent = 0;
 int pageTeacher = 0;
+int godkendt;
 
 Knap e1;
 Knap e2;
@@ -48,10 +49,17 @@ void draw(){
     text("Lærer",505,800);
     fill(36,109,120);
   if(mouseX>500 && mouseX<500+150 && mouseY>450 && mouseY<450+80 && mousePressed){pageStudent++;}
-
+  if(mouseX>500 && mouseX<500+150 && mouseY>750 && mouseY<750+80 && mousePressed){pageTeacher++;}
   }
   
-///////////////////////////////////////////////////////// Elev sider ///////////////
+///////////////////////////////////////////////////////// Elev sider ////////////////////////////////////////////////////////////
+   if(pageStudent == 1){
+    fill(100,100,100);
+    e6 = guihand.lavKlik (500,200);
+    
+    e6.Tegn();
+    fill(36,109,120);
+  }
   
   if(pageStudent == 2){
     fill(100,100,100);
@@ -64,15 +72,7 @@ void draw(){
     fill(36,109,120);
   }
   
-   if(pageStudent == 1){
-    fill(100,100,100);
-    e6 = guihand.lavKlik (100,100);
-    
-    e6.Tegn();
-    fill(36,109,120);
-  }
-  
-/////////////////////////////////////////////////////////// Test sider ///////////////
+/////////////////////////////////////////////////////////// Test sider ///////////////////////////////////////////////////////////
   if(pageStudent == 3){
     fill(100,100,100);
    
@@ -89,10 +89,10 @@ void draw(){
     fill(36,109,120);
   }
   
-////////////////////////////////////////////////////////// Lærer sider ///////////////
+////////////////////////////////////////////////////////// Lærer sider /////////////////////////////////////////////////////////
   if(pageTeacher == 1){
     fill(100,100,100);
-    e7 = guihand.lavKlik (300,300);
+    e7 = guihand.lavKlik (500,300);
     
     e7.Tegn();
     fill(36,109,120);
@@ -100,9 +100,8 @@ void draw(){
   
   if(pageTeacher == 2){
     fill(100,100,100);
-    e8 = guihand.lavKlik (300,500);
-    e9 = guihand.lavKlik (300,700);
-    
+    e8 = guihand.lavKlik (500,500);
+    e9 = guihand.lavKlik (500,700);
     e8.Tegn();
     e9.Tegn();
     fill(36,109,120);
