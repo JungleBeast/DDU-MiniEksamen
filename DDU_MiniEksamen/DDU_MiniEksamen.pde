@@ -6,7 +6,7 @@ int pageStudent = 0;
 int pageTeacher = 0;
 int godkendt;
 
-Knap e1; Knap e2; Knap e3; Knap e4; Knap e5; Knap e6; Knap e7; Knap e8; Knap e9; Knap r1; Knap r2; Knap r3; Knap r4;
+Knap e1; Knap e2; Knap e3; Knap e4; Knap e5; Knap e6; Knap e7; Knap e8; Knap e9; Knap d1; Knap d2; Knap d3;
 
 
 
@@ -79,25 +79,36 @@ void draw(){
   if(pageStudent == 3){
     fill(100,100,100);
    text("1",500,500);
+    d1 = guihand.lavKlik (1700,950);
+    
+    d1.Tegn();
     fill(36,109,120);
   }
     if(pageStudent == 4){
     fill(100,100,100);
     text("2",500,500);
+    d2 = guihand.lavKlik (1700,950);
+    
+    d2.Tegn();
     fill(36,109,120);
   }
     if(pageStudent == 5){
     fill(100,100,100);
     text("3",500,500);
+    d3 = guihand.lavKlik (1700,950);
+    
+    d3.Tegn();
     fill(36,109,120);
+    
   }
   
 ////////////////////////////////////////////////////////// Lærer sider /////////////////////////////////////////////////////////
   if(pageTeacher == 1){
     fill(100,100,100);
-    e7 = guihand.lavKlik (500,300);
+    e7 = guihand.lavKlik (900,800);
     
     e7.Tegn();
+    if(mouseX>900 && mouseX<900+150 && mouseY>800 && mouseY<800+80 && mousePressed){pageTeacher++;}
     fill(36,109,120);
   }
   
