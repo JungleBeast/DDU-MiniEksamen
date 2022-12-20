@@ -4,6 +4,7 @@ GuiHandler guihand = new GuiHandler();
 
 int pageStudent = 0;
 int pageTeacher = 0;
+int testtimer;
 
 Knap e1;
 Knap e2;
@@ -27,22 +28,32 @@ void setup(){
 }
 void draw(){
   clear();
+  testtimer=testtimer+1;
+  if(testtimer == 100){
+    pageStudent++;
+    testtimer=0; 
+  }
   background(39,49,74);
   fill(36,109,120);
   rect(0,0,1920,100);
-  
+  fill(300,300,300);
+  textSize(40);
+  text("digital diktat",20,57);
+  fill(36,109,120);
   
   
 
   if(pageStudent == 0 && pageTeacher == 0){
     fill(300,300,300);
-    textSize(30);
-    text("digital diktat",20,56);
-    text("Elev",505,460);
-    text("Lærer",505,760);
     e1 = guihand.lavKlik (500,450);
     e2 = guihand.lavKlik (500,750);
+    e1.Tegn();
+    e2.Tegn();
+    fill(500,500,500);
+    text("Elev",505,460);
+    text("Lærer",505,760);
     fill(36,109,120);
+
   }
   
 ///////////////////////////////////////////////////////// Elev sider ///////////////
@@ -50,7 +61,7 @@ void draw(){
     fill(100,100,100);
     e6 = guihand.lavKlik (100,100);
     
-    
+    e6.Tegn();
     fill(36,109,120);
   }
   
@@ -84,14 +95,15 @@ void draw(){
     fill(100,100,100);
     e7 = guihand.lavKlik (300,300);
     
-    
+    guihand.displayAll();
     fill(36,109,120);
   }
   
   if(pageTeacher == 2){
     fill(100,100,100);
-    e8 = guihand.lavKlik (300,700);
+    e8 = guihand.lavKlik (300,500);
     e9 = guihand.lavKlik (300,700);
+    guihand.displayAll();
     fill(36,109,120);
   }
   
