@@ -13,5 +13,4 @@ class KlikKnap extends Knap{
   fill(100,100,100);
   stroke(10);
   rect (xpos, ypos,150,80);
-  }}
-}
+  }}}

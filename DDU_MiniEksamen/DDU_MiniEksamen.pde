@@ -4,7 +4,6 @@ GuiHandler guihand = new GuiHandler();
 
 int pageStudent = 0;
 int pageTeacher = 0;
-int testtimer;
 
 Knap e1;
 Knap e2;
@@ -28,11 +27,6 @@ void setup(){
 }
 void draw(){
   clear();
-  testtimer=testtimer+1;
-  if(testtimer == 100){
-    pageStudent++;
-    testtimer=0; 
-  }
   background(39,49,74);
   fill(36,109,120);
   rect(0,0,1920,100);
@@ -57,19 +51,23 @@ void draw(){
   }
   
 ///////////////////////////////////////////////////////// Elev sider ///////////////
- if(pageStudent == 1){
-    fill(100,100,100);
-    e6 = guihand.lavKlik (100,100);
-    
-    e6.Tegn();
-    fill(36,109,120);
-  }
   
   if(pageStudent == 2){
     fill(100,100,100);
     e3 = guihand.lavKlik (300,300);
     e4 = guihand.lavKlik (300,500);
     e5 = guihand.lavKlik (300,700);
+    e3.Tegn();
+    e4.Tegn();
+    e5.Tegn();
+    fill(36,109,120);
+  }
+  
+   if(pageStudent == 1){
+    fill(100,100,100);
+    e6 = guihand.lavKlik (100,100);
+    
+    e6.Tegn();
     fill(36,109,120);
   }
   
@@ -95,7 +93,7 @@ void draw(){
     fill(100,100,100);
     e7 = guihand.lavKlik (300,300);
     
-    guihand.displayAll();
+    e7.Tegn();
     fill(36,109,120);
   }
   
@@ -103,7 +101,9 @@ void draw(){
     fill(100,100,100);
     e8 = guihand.lavKlik (300,500);
     e9 = guihand.lavKlik (300,700);
-    guihand.displayAll();
+    
+    e8.Tegn();
+    e9.Tegn();
     fill(36,109,120);
   }
   
