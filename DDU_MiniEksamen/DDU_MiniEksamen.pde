@@ -44,9 +44,10 @@ void draw(){
     e1.Tegn();
     e2.Tegn();
     fill(500,500,500);
-    text("Elev",505,460);
-    text("Lærer",505,760);
+    text("Elev",505,500);
+    text("Lærer",505,800);
     fill(36,109,120);
+  if(mouseX>500 && mouseX<500+150 && mouseY>450 && mouseY<450+80 && mousePressed){pageStudent++;}
 
   }
   
