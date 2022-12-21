@@ -138,9 +138,23 @@ if(check==1){
     e9 = guihand.lavKlik (500,700);
     e8.Tegn();
     e9.Tegn();
+    if(mouseX>500 && mouseX<500+150 && mouseY>500 && mouseY<500+80 && mousePressed){pageTeacher++;}
+    if(mouseX>500 && mouseX<500+150 && mouseY>700 && mouseY<700+80 && mousePressed){pageTeacher++;}
     fill(36,109,120);
   }
-
+  if(pageTeacher == 3){
+    fill(100,100,100);
+    //hent elevernes information
+    fill(36,109,120);
+  }
+    if(pageTeacher == 4){
+    fill(100,100,100);
+    e8 = guihand.lavKlik (500,500);
+    e8.Tegn();
+    fill(36,109,120);
+  }
+  
+  
 }
 
 void mousePressed(){
