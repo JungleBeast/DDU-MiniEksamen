@@ -4,7 +4,7 @@ GuiHandler guihand = new GuiHandler();
 
 int pageStudent = 0;
 int pageTeacher = 0;
-int godkendt;
+int check;
 
 Knap e1; Knap e2; Knap e3; Knap e4; Knap e5; Knap e6; Knap e7; Knap e8; Knap e9; Knap d1; Knap d2; Knap d3;
 TekstFelt L1; TekstFelt L2; TekstFelt E1; TekstFelt E2;
@@ -28,6 +28,7 @@ void draw(){
   textSize(40);
   text("digital diktat",20,57);
   fill(36,109,120);
+  
   
 ////////////////////////////////////////////////////////////////////Start side og tilbage knap ////////////////////////////////////////
   if(pageStudent>0 && pageTeacher==0 || pageStudent==0 && pageTeacher>0){ 
@@ -61,8 +62,22 @@ void draw(){
     e6.Tegn();
     E1.Tegn();
     E2.Tegn();
-    if(mouseX>900 && mouseX<900+150 && mouseY>800 && mouseY<800+80 && mousePressed){pageStudent++;}
+    if(mouseX>900 && mouseX<900+150 && mouseY>800 && mouseY<800+80 && mousePressed){check++;}
     fill(36,109,120);
+
+if(check==1){
+  if(sqlite.connect()){
+     sqlite.query( "SELECT * FROM ElevOgLærer" );
+     while(sqlite.next()){
+       String a = sqlite.getString("Navn");
+       String b = sqlite.getString("Kode");
+       if(a.equals(E1.content) && b.equals(E2.content)){
+         pageStudent++;
+         }else{
+         println("error");
+       }}}}
+    
+    
   }
   
   if(pageStudent == 2){
@@ -126,4 +141,11 @@ void draw(){
     fill(36,109,120);
   }
 
+}
+
+void mousePressed(){
+  guihand.detectClick();
+}
+void keyPressed(){
+  guihand.detectKeyPressed();
 }
