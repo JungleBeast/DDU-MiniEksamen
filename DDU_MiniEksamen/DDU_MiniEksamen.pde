@@ -7,17 +7,18 @@ int pageTeacher = 0;
 int godkendt;
 
 Knap e1; Knap e2; Knap e3; Knap e4; Knap e5; Knap e6; Knap e7; Knap e8; Knap e9; Knap d1; Knap d2; Knap d3;
-
+TekstFelt L1; TekstFelt L2; TekstFelt E1; TekstFelt E2;
 
 
 void setup(){
   sqlite = new SQLite(this, "DataBase_MiniEksamen_projekt.sqlite");
  if(sqlite.connect()){
  }
-  
   fullScreen();
   noStroke();
 }
+
+
 void draw(){
   clear();
   background(39,49,74);
@@ -28,14 +29,14 @@ void draw(){
   text("digital diktat",20,57);
   fill(36,109,120);
   
+////////////////////////////////////////////////////////////////////Start side og tilbage knap ////////////////////////////////////////
   if(pageStudent>0 && pageTeacher==0 || pageStudent==0 && pageTeacher>0){ 
     if(pageStudent<3){fill(500,500,500); rect(50,100,80,40); fill(1,1,1); textSize(20); text("tilbage",60,125); textSize(40); fill(36,109,120); 
      if(pageStudent>0){
-      if(mouseX>50 && mouseX<50+80 && mouseY>100 && mouseY<100+40 && mousePressed){pageStudent--; delay(300);}
-      }
-      if(pageTeacher>0){
-      if(mouseX>50 && mouseX<50+80 && mouseY>100 && mouseY<100+40 && mousePressed){pageTeacher--; delay(300);}
-      }}}
+      if(mouseX>50 && mouseX<50+80 && mouseY>100 && mouseY<100+40 && mousePressed){pageStudent--; delay(300);}}
+      if(pageTeacher>0){if(mouseX>50 && mouseX<50+80 && mouseY>100 && mouseY<100+40 && mousePressed){pageTeacher--; delay(300);}}}
+   }
+
 
   if(pageStudent == 0 && pageTeacher == 0){
     fill(300,300,300);
@@ -55,8 +56,11 @@ void draw(){
    if(pageStudent == 1){
     fill(100,100,100);
     e6 = guihand.lavKlik (900,800);
-    
+    E1 = guihand.lavTekstFelt (800,500);
+    E2 = guihand.lavTekstFelt (800,600);
     e6.Tegn();
+    E1.Tegn();
+    E2.Tegn();
     if(mouseX>900 && mouseX<900+150 && mouseY>800 && mouseY<800+80 && mousePressed){pageStudent++;}
     fill(36,109,120);
   }
@@ -80,7 +84,6 @@ void draw(){
     fill(100,100,100);
    text("1",500,500);
     d1 = guihand.lavKlik (1700,950);
-    
     d1.Tegn();
     fill(36,109,120);
   }
@@ -88,15 +91,14 @@ void draw(){
     fill(100,100,100);
     text("2",500,500);
     d2 = guihand.lavKlik (1700,950);
-    
     d2.Tegn();
     fill(36,109,120);
   }
+  
     if(pageStudent == 5){
     fill(100,100,100);
     text("3",500,500);
     d3 = guihand.lavKlik (1700,950);
-    
     d3.Tegn();
     fill(36,109,120);
     
@@ -106,7 +108,10 @@ void draw(){
   if(pageTeacher == 1){
     fill(100,100,100);
     e7 = guihand.lavKlik (900,800);
-    
+    L1 = guihand.lavTekstFelt (800,500);
+    L2 = guihand.lavTekstFelt (800,600);
+    L1.Tegn();
+    L2.Tegn();
     e7.Tegn();
     if(mouseX>900 && mouseX<900+150 && mouseY>800 && mouseY<800+80 && mousePressed){pageTeacher++;}
     fill(36,109,120);
@@ -120,6 +125,5 @@ void draw(){
     e9.Tegn();
     fill(36,109,120);
   }
-  
-  
+
 }

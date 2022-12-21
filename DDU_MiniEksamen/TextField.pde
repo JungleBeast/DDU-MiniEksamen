@@ -15,7 +15,9 @@ ypos = y;
   noFill();
   stroke(100);
   rect(xpos, ypos, 500, 50);
+  fill(500,500,500);
   text(content, xpos+10, ypos+35);
+  noFill();
   }
   
   
