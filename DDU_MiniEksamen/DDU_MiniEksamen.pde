@@ -4,7 +4,8 @@ GuiHandler guihand = new GuiHandler();
 
 int pageStudent = 0;
 int pageTeacher = 0;
-int check;
+int checkElev;
+int checkLærer;
 
 Knap e1; Knap e2; Knap e3; Knap e4; Knap e5; Knap e6; Knap e7; Knap e8; Knap e9; Knap d1; Knap d2; Knap d3;
 TekstFelt L1; TekstFelt L2; TekstFelt E1; TekstFelt E2;
@@ -62,12 +63,12 @@ void draw(){
     e6.Tegn();
     E1.Tegn();
     E2.Tegn();
-    if(mouseX>900 && mouseX<900+150 && mouseY>800 && mouseY<800+80 && mousePressed){check++;}
+    if(mouseX>900 && mouseX<900+150 && mouseY>800 && mouseY<800+80 && mousePressed){checkElev++;}
     fill(36,109,120);
 
-if(check==1){
+if(checkElev==1){
   if(sqlite.connect()){
-     sqlite.query( "SELECT * FROM ElevOgLærer" );
+     sqlite.query( "SELECT * FROM Elev" );
      while(sqlite.next()){
        String a = sqlite.getString("Navn");
        String b = sqlite.getString("Kode");
@@ -76,9 +77,7 @@ if(check==1){
          }else{
          println("error");
        }}}}
-    
-    
-  }
+ }
   
   if(pageStudent == 2){
     fill(100,100,100);
@@ -128,8 +127,19 @@ if(check==1){
     L1.Tegn();
     L2.Tegn();
     e7.Tegn();
-    if(mouseX>900 && mouseX<900+150 && mouseY>800 && mouseY<800+80 && mousePressed){pageTeacher++;}
+    if(mouseX>900 && mouseX<900+150 && mouseY>800 && mouseY<800+80 && mousePressed){checkLærer++;}
     fill(36,109,120);
+    if(checkLærer==1){
+  if(sqlite.connect()){
+     sqlite.query( "SELECT * FROM Lærer" );
+     while(sqlite.next()){
+       String a = sqlite.getString("Navn");
+       String b = sqlite.getString("Kode");
+       if(a.equals(L1.content) && b.equals(L2.content)){
+         pageTeacher++;
+         }else{
+         println("error");
+       }}}}
   }
   
   if(pageTeacher == 2){
