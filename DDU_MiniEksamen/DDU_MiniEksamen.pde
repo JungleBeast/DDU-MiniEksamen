@@ -7,8 +7,7 @@ int pageTeacher = 0;
 int checkElev;
 int checkLærer;
 
-Knap e1; Knap e2; Knap e3; Knap e4; Knap e5; Knap e6; Knap e7; Knap e8; Knap e9; Knap d1; Knap d2; Knap d3;
-TekstFelt L1; TekstFelt L2; TekstFelt E1; TekstFelt E2;
+Knap e1; Knap e2; Knap e3; Knap e4; Knap e5; Knap e6; Knap e7; Knap e8; Knap e9; Knap d1; Knap d2; Knap d3; Knap tf1; Knap tf2; Knap tf3; Knap tf4;
 
 
 void setup(){
@@ -58,25 +57,14 @@ void draw(){
    if(pageStudent == 1){
     fill(100,100,100);
     e6 = guihand.lavKlik (900,800);
-    E1 = guihand.lavTekstFelt (800,500);
-    E2 = guihand.lavTekstFelt (800,600);
+    tf1 = guihand.lavKlik (900,500);
+    tf2 = guihand.lavKlik (900,400);
     e6.Tegn();
-    E1.Tegn();
-    E2.Tegn();
+    tf1.Tegn2();
+    tf2.Tegn2();
+    if(mouseX>900 && mouseX<900+150 && mouseY>800 && mouseY<800+80 && mousePressed){}
     if(mouseX>900 && mouseX<900+150 && mouseY>800 && mouseY<800+80 && mousePressed){checkElev++;}
     fill(36,109,120);
-
-if(checkElev==1){
-  if(sqlite.connect()){
-     sqlite.query( "SELECT * FROM Elev" );
-     while(sqlite.next()){
-       String a = sqlite.getString("Navn");
-       String b = sqlite.getString("Kode");
-       if(a.equals(E1.content) && b.equals(E2.content)){
-         pageStudent++;
-         }else{
-         println("error");
-       }}}}
  }
   
   if(pageStudent == 2){
@@ -122,24 +110,12 @@ if(checkElev==1){
   if(pageTeacher == 1){
     fill(100,100,100);
     e7 = guihand.lavKlik (900,800);
-    L1 = guihand.lavTekstFelt (800,500);
-    L2 = guihand.lavTekstFelt (800,600);
-    L1.Tegn();
-    L2.Tegn();
+    tf3 = guihand.lavKlik (900,500);
+    tf4 = guihand.lavKlik (900,400);
     e7.Tegn();
+    tf3.Tegn2();
+    tf4.Tegn2();
     if(mouseX>900 && mouseX<900+150 && mouseY>800 && mouseY<800+80 && mousePressed){checkLærer++;}
-    fill(36,109,120);
-    if(checkLærer==1){
-  if(sqlite.connect()){
-     sqlite.query( "SELECT * FROM Lærer" );
-     while(sqlite.next()){
-       String a = sqlite.getString("Navn");
-       String b = sqlite.getString("Kode");
-       if(a.equals(L1.content) && b.equals(L2.content)){
-         pageTeacher++;
-         }else{
-         println("error");
-       }}}}
   }
   
   if(pageTeacher == 2){

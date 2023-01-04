@@ -13,4 +13,17 @@ class KlikKnap extends Knap{
   fill(100,100,100);
   stroke(10);
   rect (xpos, ypos,150,80);
-  }}}
+  }}
+  
+   void Tegn2(){
+  if(mouseX>xpos && mouseX<xpos+200 && mouseY>ypos && mouseY<ypos+50 && mousePressed){
+  stroke(10);
+  Name++;
+  rect (xpos, ypos,200,50);
+  }else{
+  fill(100,100,100);
+  stroke(10);
+  rect (xpos, ypos,200,50);
+  }}
+  }
+  

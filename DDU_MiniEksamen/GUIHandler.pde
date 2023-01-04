@@ -5,15 +5,7 @@ class GuiHandler{
     Knap b = new KlikKnap (x,y);
     Knapper.add(b);
     return (b);
-  }
-  
-  TekstFelt lavTekstFelt(int x,int y){
-    TekstFelt s = new TekstFelt (x,y);
-    Knapper.add(s);
-    return (s);
-  }
-  
- 
+  } 
   
   void displayAll(){
   for(Knap k : Knapper){
