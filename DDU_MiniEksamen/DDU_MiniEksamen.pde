@@ -1,7 +1,7 @@
 import de.bezier.data.sql.*;
 SQLite sqlite;
 GuiHandler guihand = new GuiHandler();
-
+String[] tekst = new String[10];
 int logon;
 int pageStudent = 0;
 int pageTeacher = 0;
@@ -11,6 +11,8 @@ String content = "navn";
 String content1 = "kode";
 String content2 = "mail";
 String content3 = "kode";
+String contentRead = "´´Rap! rap!´´ sagde hun, og så rappede de sig alt .      . de kunne, og så til alle sider under de            blade, og moderen lod dem se så meget de ville, for det grønne er godt for øjnene.";
+
 
 Knap e1; Knap e2; Knap e3; Knap e4; Knap e5; Knap e6; Knap e7; Knap e8; Knap e9; Knap d1; Knap d2; Knap d3; Knap tf1; Knap tf2; Knap tf3; Knap tf4;
 
@@ -87,6 +89,10 @@ void draw(){
     e3.Tegn();
     e4.Tegn();
     e5.Tegn();
+    fill(500,500,500);
+    text("Niveau 1",660,350);
+    text("Niveau 2",660,550);
+    text("Niveau 3",660,750);
     fill(36,109,120);
     if(mouseX>500 && mouseX<500+150 && mouseY>300 && mouseY<300+80 && mousePressed){pageStudent++;}
     if(mouseX>500 && mouseX<500+150 && mouseY>500 && mouseY<500+80 && mousePressed){pageStudent = pageStudent + 2;}
@@ -97,10 +103,20 @@ void draw(){
   if(pageStudent == 3){
     fill(100,100,100);
    text("1",500,500);
+   textSize(30);
+   text(contentRead,300,300);
+   
+  if(sqlite.connect()){
+     sqlite.query( "SELECT * FROM Dictat" );
+     while(sqlite.next()){
+       String tekst = sqlite.getString("Tekst_niveau1");
+     }}
     d1 = guihand.lavKlik (1700,950);
     d1.Tegn();
     fill(36,109,120);
   }
+  
+  
     if(pageStudent == 4){
     fill(100,100,100);
     text("2",500,500);
@@ -108,6 +124,7 @@ void draw(){
     d2.Tegn();
     fill(36,109,120);
   }
+  
   
     if(pageStudent == 5){
     fill(100,100,100);
