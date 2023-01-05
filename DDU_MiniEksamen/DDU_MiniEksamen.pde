@@ -2,10 +2,15 @@ import de.bezier.data.sql.*;
 SQLite sqlite;
 GuiHandler guihand = new GuiHandler();
 
+int logon;
 int pageStudent = 0;
 int pageTeacher = 0;
 int checkElev;
 int checkLærer;
+String content = "navn";
+String content1 = "kode";
+String content2 = "mail";
+String content3 = "kode";
 
 Knap e1; Knap e2; Knap e3; Knap e4; Knap e5; Knap e6; Knap e7; Knap e8; Knap e9; Knap d1; Knap d2; Knap d3; Knap tf1; Knap tf2; Knap tf3; Knap tf4;
 
@@ -62,8 +67,15 @@ void draw(){
     e6.Tegn();
     tf1.Tegn2();
     tf2.Tegn2();
-    if(mouseX>900 && mouseX<900+150 && mouseY>800 && mouseY<800+80 && mousePressed){}
-    if(mouseX>900 && mouseX<900+150 && mouseY>800 && mouseY<800+80 && mousePressed){checkElev++;}
+    fill(500,500,500);
+    textSize(30);
+    text(content,910,435);
+    text(content1,910,535);
+    fill(100,100,100);
+    //text(content1,900,500);
+    if(mouseX>900 && mouseX<900+200 && mouseY>400 && mouseY<400+50 && mousePressed && logon==0){content = "William" ;logon++;}
+    if(mouseX>900 && mouseX<900+200 && mouseY>500 && mouseY<500+50 && mousePressed && logon==1){content1 = "************" ;logon++;}
+    if(mouseX>900 && mouseX<900+150 && mouseY>800 && mouseY<800+80 && mousePressed && logon==2){pageStudent++; logon=0;}
     fill(36,109,120);
  }
   
@@ -115,7 +127,15 @@ void draw(){
     e7.Tegn();
     tf3.Tegn2();
     tf4.Tegn2();
-    if(mouseX>900 && mouseX<900+150 && mouseY>800 && mouseY<800+80 && mousePressed){checkLærer++;}
+    fill(500,500,500);
+    textSize(30);
+    text(content2,910,435);
+    text(content3,910,540);
+    fill(100,100,100);
+    if(mouseX>900 && mouseX<900+200 && mouseY>400 && mouseY<400+50 && mousePressed && logon==0){content2 = "Hansen3@gma" ;logon++;}
+    if(mouseX>900 && mouseX<900+200 && mouseY>500 && mouseY<500+50 && mousePressed && logon==1){content3 = "******" ;logon++;}
+    if(mouseX>900 && mouseX<900+150 && mouseY>800 && mouseY<800+80 && mousePressed && logon==2){pageTeacher++; logon=0;}
+    
   }
   
   if(pageTeacher == 2){
