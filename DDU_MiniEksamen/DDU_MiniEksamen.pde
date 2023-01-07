@@ -11,16 +11,17 @@ String content = "navn";
 String content1 = "kode";
 String content2 = "mail";
 String content3 = "kode";
-String contentRead = "´´Rap! rap!´´ sagde hun, og så rappede de sig alt .      . de kunne, og så til alle sider under de            blade, og moderen lod dem se så meget de ville, for det grønne er godt for øjnene.";
-
+String Tekst;
+String Tekst2;
+String Tekst3;
+String Tekst4;
+String Tekst5;
 
 Knap e1; Knap e2; Knap e3; Knap e4; Knap e5; Knap e6; Knap e7; Knap e8; Knap e9; Knap d1; Knap d2; Knap d3; Knap tf1; Knap tf2; Knap tf3; Knap tf4;
 
 
 void setup(){
-  sqlite = new SQLite(this, "DataBase_MiniEksamen_projekt.sqlite");
- if(sqlite.connect()){
- }
+sqlite = new SQLite(this, "DataBase_MiniEksamen_projekt.sqlite");
   fullScreen();
   noStroke();
 }
@@ -103,14 +104,36 @@ void draw(){
   if(pageStudent == 3){
     fill(100,100,100);
    text("1",500,500);
-   textSize(30);
-   text(contentRead,300,300);
    
   if(sqlite.connect()){
-     sqlite.query( "SELECT * FROM Dictat" );
+     sqlite.query( "SELECT * FROM Dictat WHERE Tekst_niveau1 LIKE '%Rap%'" );
      while(sqlite.next()){
-       String tekst = sqlite.getString("Tekst_niveau1");
-     }}
+       Tekst = sqlite.getString("Tekst_niveau1");
+     }
+     sqlite.query( "SELECT * FROM Dictat WHERE Tekst_niveau1 LIKE '%Rundt%'" );
+     while(sqlite.next()){
+       Tekst2 = sqlite.getString("Tekst_niveau1");
+     } 
+     sqlite.query( "SELECT * FROM Dictat WHERE Tekst_niveau1 LIKE '%Midt%'" );
+     while(sqlite.next()){
+       Tekst3 = sqlite.getString("Tekst_niveau1");
+     }     
+     sqlite.query( "SELECT * FROM Dictat WHERE Tekst_niveau1 LIKE '%Endelig%'" );
+     while(sqlite.next()){
+       Tekst4 = sqlite.getString("Tekst_niveau1");
+     }     
+     sqlite.query( "SELECT * FROM Dictat WHERE Tekst_niveau1 LIKE '%høet%'" );
+     while(sqlite.next()){
+       Tekst5 = sqlite.getString("Tekst_niveau1");
+     }  
+ }
+     
+    textSize(30);
+    text(Tekst,300,300);
+    text(Tekst2,300,400);
+    text(Tekst3,300,500);
+    text(Tekst4,300,600);
+    text(Tekst5,300,700);
     d1 = guihand.lavKlik (1700,950);
     d1.Tegn();
     fill(36,109,120);
