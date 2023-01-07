@@ -5,8 +5,7 @@ String[] tekst = new String[10];
 int logon;
 int pageStudent = 0;
 int pageTeacher = 0;
-int checkElev;
-int checkLærer;
+int Score;
 String content = "navn";
 String content1 = "kode";
 String content2 = "mail";
@@ -27,6 +26,7 @@ String ServerSvarT2N1 = "";
 String ServerSvarT3N1 = "";
 String ServerSvarT4N1 = "";
 String ServerSvarT5N1 = "";
+String ScorePrint = "";
 
 
 Knap e1; Knap e2; Knap e3; Knap e4; Knap e5; Knap e6; Knap e7; Knap e8; Knap e9; Knap d1; Knap d2; Knap d3; Knap tf1; Knap tf2; Knap tf3; Knap tf4;
@@ -173,7 +173,15 @@ void draw(){
     d1.Tegn();
     fill(36,109,120);
     if(mouseX>1700 && mouseX<1700+150 && mouseY>950 && mouseY<950+80 && mousePressed){ 
-    if(ServerSvarT1N1.equals(SvarT1N1) && ServerSvarT2N1.equals(SvarT2N1) && ServerSvarT3N1.equals(SvarT3N1) && ServerSvarT4N1.equals(SvarT4N1) && ServerSvarT5N1.equals(SvarT5N1)){pageStudent=2;}
+  if(ServerSvarT1N1.equals(SvarT1N1)){Score++;} 
+  if(ServerSvarT2N1.equals(SvarT2N1)){Score++;} 
+  if(ServerSvarT3N1.equals(SvarT3N1)){Score++;} 
+  if(ServerSvarT4N1.equals(SvarT4N1)){Score++;} 
+  if(ServerSvarT5N1.equals(SvarT5N1)){Score++;}   
+  pageStudent=2;
+  }
+  if(sqlite.connect()){
+  sqlite.query( "INSERT INTO Elev (Navn,Points) VALUES ('"+content+"','"+Score+"') ");
   }
   }
   
@@ -228,17 +236,24 @@ void draw(){
   }
   if(pageTeacher == 3){
     fill(100,100,100);
-    //hent elevernes information
+    
+    if(sqlite.connect()){
+     sqlite.query( "SELECT * FROM Elev WHERE Navn LIKE '%W%'" );
+     while(sqlite.next()){
+       ScorePrint = sqlite.getString("Points");
+     }}
+    fill(500,500,500);
+     text(ScorePrint,400,400);
     fill(36,109,120);
   }
+  
+  
     if(pageTeacher == 4){
     fill(100,100,100);
     e8 = guihand.lavKlik (500,500);
     e8.Tegn();
     fill(36,109,120);
   }
-  
-  
 }
 
 void mousePressed(){
