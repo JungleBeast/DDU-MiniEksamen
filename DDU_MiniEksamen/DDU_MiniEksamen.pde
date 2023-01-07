@@ -16,6 +16,17 @@ String Tekst2;
 String Tekst3;
 String Tekst4;
 String Tekst5;
+String SvarT1N1 = "hvad";
+String SvarT2N1 = "midt";
+String SvarT3N1 = "gammel";
+String SvarT4N1 = "andet";
+String SvarT5N1 = "grønne";
+String ServerSvarT1N1;
+String ServerSvarT2N1;
+String ServerSvarT3N1;
+String ServerSvarT4N1;
+String ServerSvarT5N1;
+
 
 Knap e1; Knap e2; Knap e3; Knap e4; Knap e5; Knap e6; Knap e7; Knap e8; Knap e9; Knap d1; Knap d2; Knap d3; Knap tf1; Knap tf2; Knap tf3; Knap tf4;
 
@@ -103,7 +114,6 @@ void draw(){
 /////////////////////////////////////////////////////////// Test sider ///////////////////////////////////////////////////////////
   if(pageStudent == 3){
     fill(100,100,100);
-   text("1",500,500);
    
   if(sqlite.connect()){
      sqlite.query( "SELECT * FROM Dictat WHERE Tekst_niveau1 LIKE '%Rap%'" );
@@ -134,6 +144,14 @@ void draw(){
     text(Tekst3,300,500);
     text(Tekst4,300,600);
     text(Tekst5,300,700);
+    noFill();
+    rect(930,277,120,30);
+    rect(860,377,80,30);
+    rect(630,477,120,30);
+    rect(770,577,100,30);
+    rect(690,677,100,30);
+    
+    fill(100);
     d1 = guihand.lavKlik (1700,950);
     d1.Tegn();
     fill(36,109,120);

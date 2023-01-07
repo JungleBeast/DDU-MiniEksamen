@@ -36,5 +36,4 @@ class KlikKnap extends Knap{
   stroke(10);
   circle (xpos, ypos,50);
   }}
-  }
-  
+}
