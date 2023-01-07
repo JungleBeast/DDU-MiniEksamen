@@ -16,16 +16,17 @@ String Tekst2;
 String Tekst3;
 String Tekst4;
 String Tekst5;
-String SvarT1N1 = "hvad";
-String SvarT2N1 = "midt";
-String SvarT3N1 = "gammel";
-String SvarT4N1 = "andet";
-String SvarT5N1 = "grønne";
-String ServerSvarT1N1;
-String ServerSvarT2N1;
-String ServerSvarT3N1;
-String ServerSvarT4N1;
-String ServerSvarT5N1;
+
+String SvarT1N1 = "";
+String SvarT2N1 = "";
+String SvarT3N1 = ""; 
+String SvarT4N1 = ""; 
+String SvarT5N1 = "";
+String ServerSvarT1N1 = "";
+String ServerSvarT2N1 = "";
+String ServerSvarT3N1 = "";
+String ServerSvarT4N1 = "";
+String ServerSvarT5N1 = "";
 
 
 Knap e1; Knap e2; Knap e3; Knap e4; Knap e5; Knap e6; Knap e7; Knap e8; Knap e9; Knap d1; Knap d2; Knap d3; Knap tf1; Knap tf2; Knap tf3; Knap tf4;
@@ -119,22 +120,27 @@ void draw(){
      sqlite.query( "SELECT * FROM Dictat WHERE Tekst_niveau1 LIKE '%Rap%'" );
      while(sqlite.next()){
        Tekst = sqlite.getString("Tekst_niveau1");
+       ServerSvarT1N1 = sqlite.getString("Svar");
      }
      sqlite.query( "SELECT * FROM Dictat WHERE Tekst_niveau1 LIKE '%Rundt%'" );
      while(sqlite.next()){
        Tekst2 = sqlite.getString("Tekst_niveau1");
+       ServerSvarT2N1 = sqlite.getString("Svar");
      } 
      sqlite.query( "SELECT * FROM Dictat WHERE Tekst_niveau1 LIKE '%Midt%'" );
      while(sqlite.next()){
        Tekst3 = sqlite.getString("Tekst_niveau1");
+       ServerSvarT3N1 = sqlite.getString("Svar");
      }     
      sqlite.query( "SELECT * FROM Dictat WHERE Tekst_niveau1 LIKE '%Endelig%'" );
      while(sqlite.next()){
        Tekst4 = sqlite.getString("Tekst_niveau1");
+       ServerSvarT4N1 = sqlite.getString("Svar");
      }     
      sqlite.query( "SELECT * FROM Dictat WHERE Tekst_niveau1 LIKE '%høet%'" );
      while(sqlite.next()){
        Tekst5 = sqlite.getString("Tekst_niveau1");
+       ServerSvarT5N1 = sqlite.getString("Svar");
      }  
  }
      
@@ -145,16 +151,30 @@ void draw(){
     text(Tekst4,300,600);
     text(Tekst5,300,700);
     noFill();
-    rect(930,277,120,30);
+    rect(930,277,90,30);
     rect(860,377,80,30);
     rect(630,477,120,30);
     rect(770,577,100,30);
     rect(690,677,100,30);
     
+    if(mouseX>930 && mouseX<930+90 && mouseY>277 && mouseY<277+30 && mousePressed){SvarT1N1="hvad";}
+    if(mouseX>860 && mouseX<860+80 && mouseY>377 && mouseY<377+30 && mousePressed){SvarT2N1="midt";}
+    if(mouseX>630 && mouseX<630+120 && mouseY>477 && mouseY<477+30 && mousePressed){SvarT3N1="gammel";}
+    if(mouseX>770 && mouseX<770+100 && mouseY>577 && mouseY<577+30 && mousePressed){SvarT4N1="andet";}
+    if(mouseX>690 && mouseX<690+120 && mouseY>677 && mouseY<677+30 && mousePressed){SvarT5N1="grønne";}
+    
+    text(SvarT1N1,940,300);
+    text(SvarT2N1,870,400);
+    text(SvarT3N1,640,500);
+    text(SvarT4N1,780,600);
+    text(SvarT5N1,700,700);
     fill(100);
     d1 = guihand.lavKlik (1700,950);
     d1.Tegn();
     fill(36,109,120);
+    if(mouseX>1700 && mouseX<1700+150 && mouseY>950 && mouseY<950+80 && mousePressed){ 
+    if(ServerSvarT1N1.equals(SvarT1N1) && ServerSvarT2N1.equals(SvarT2N1) && ServerSvarT3N1.equals(SvarT3N1) && ServerSvarT4N1.equals(SvarT4N1) && ServerSvarT5N1.equals(SvarT5N1)){pageStudent=2;}
+  }
   }
   
   
