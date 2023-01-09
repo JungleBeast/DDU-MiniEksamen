@@ -10,6 +10,8 @@ String content = "navn";
 String content1 = "kode";
 String content2 = "mail";
 String content3 = "kode";
+String content4 = "log ind";
+String content5 = "færdig";
 String Tekst;
 String Tekst2;
 String Tekst3;
@@ -86,6 +88,7 @@ void draw(){
     textSize(30);
     text(content,910,435);
     text(content1,910,535);
+    text(content4, 932,850);
     fill(100,100,100);
     //text(content1,900,500);
     if(mouseX>900 && mouseX<900+200 && mouseY>400 && mouseY<400+50 && mousePressed && logon==0){content = "William" ;logon++;}
@@ -145,6 +148,8 @@ void draw(){
  }
      
     textSize(30);
+    fill(255);
+    text(content5, 1800,1000);
     text(Tekst,300,300);
     text(Tekst2,300,400);
     text(Tekst3,300,500);
@@ -156,6 +161,7 @@ void draw(){
     rect(630,477,120,30);
     rect(770,577,100,30);
     rect(690,677,100,30);
+    
     
     if(mouseX>930 && mouseX<930+90 && mouseY>277 && mouseY<277+30 && mousePressed){SvarT1N1="hvad";}
     if(mouseX>860 && mouseX<860+80 && mouseY>377 && mouseY<377+30 && mousePressed){SvarT2N1="midt";}
@@ -217,6 +223,7 @@ void draw(){
     textSize(30);
     text(content2,910,435);
     text(content3,910,540);
+    text(content4, 932,850);
     fill(100,100,100);
     if(mouseX>900 && mouseX<900+200 && mouseY>400 && mouseY<400+50 && mousePressed && logon==0){content2 = "Hansen3@gma" ;logon++;}
     if(mouseX>900 && mouseX<900+200 && mouseY>500 && mouseY<500+50 && mousePressed && logon==1){content3 = "******" ;logon++;}
