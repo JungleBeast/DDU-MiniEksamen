@@ -149,7 +149,6 @@ void draw(){
      
     textSize(30);
     fill(255);
-    text(content5, 1800,1000);
     text(Tekst,300,300);
     text(Tekst2,300,400);
     text(Tekst3,300,500);
@@ -177,6 +176,8 @@ void draw(){
     fill(100);
     d1 = guihand.lavKlik (1700,950);
     d1.Tegn();
+    fill(255);
+    text(content5, 1732,1000);
     fill(36,109,120);
     if(mouseX>1700 && mouseX<1700+150 && mouseY>950 && mouseY<950+80 && mousePressed){ 
   if(ServerSvarT1N1.equals(SvarT1N1)){Score++;} 
