@@ -6,6 +6,7 @@ int logon;
 int pageStudent = 0;
 int pageTeacher = 0;
 int Score;
+int endTest;
 String content = "navn";
 String content1 = "kode";
 String content2 = "mail";
@@ -185,12 +186,16 @@ void draw(){
   if(ServerSvarT3N1.equals(SvarT3N1)){Score++;} 
   if(ServerSvarT4N1.equals(SvarT4N1)){Score++;} 
   if(ServerSvarT5N1.equals(SvarT5N1)){Score++;}   
-  pageStudent=2;
-  }
+  endTest=1;
+  pageStudent=2;}}
+  
+  if(endTest==1){
   if(sqlite.connect()){
+  println(content);
+  println(Score);
   sqlite.query( "INSERT INTO Elev (Navn,Points) VALUES ('"+content+"','"+Score+"') ");
   }
-  }
+  endTest=0;}
   
   
     if(pageStudent == 4){
@@ -198,8 +203,7 @@ void draw(){
     text("2",500,500);
     d2 = guihand.lavKlik (1700,950);
     d2.Tegn();
-    fill(36,109,120);
-  }
+    fill(36,109,120);}
   
   
     if(pageStudent == 5){
@@ -207,9 +211,7 @@ void draw(){
     text("3",500,500);
     d3 = guihand.lavKlik (1700,950);
     d3.Tegn();
-    fill(36,109,120);
-    
-  }
+    fill(36,109,120);}
   
 ////////////////////////////////////////////////////////// Lærer sider /////////////////////////////////////////////////////////
   if(pageTeacher == 1){
@@ -228,9 +230,8 @@ void draw(){
     fill(100,100,100);
     if(mouseX>900 && mouseX<900+200 && mouseY>400 && mouseY<400+50 && mousePressed && logon==0){content2 = "Hansen3@gma" ;logon++;}
     if(mouseX>900 && mouseX<900+200 && mouseY>500 && mouseY<500+50 && mousePressed && logon==1){content3 = "******" ;logon++;}
-    if(mouseX>900 && mouseX<900+150 && mouseY>800 && mouseY<800+80 && mousePressed && logon==2){pageTeacher++; logon=0;}
-    
-  }
+    if(mouseX>900 && mouseX<900+150 && mouseY>800 && mouseY<800+80 && mousePressed && logon==2){pageTeacher++; logon=0;}}
+  
   
   if(pageTeacher == 2){
     fill(100,100,100);
@@ -240,28 +241,26 @@ void draw(){
     e9.Tegn();
     if(mouseX>500 && mouseX<500+150 && mouseY>500 && mouseY<500+80 && mousePressed){pageTeacher++;}
     if(mouseX>500 && mouseX<500+150 && mouseY>700 && mouseY<700+80 && mousePressed){pageTeacher++;}
-    fill(36,109,120);
-  }
+    fill(36,109,120);}
+  
+  
   if(pageTeacher == 3){
     fill(100,100,100);
-    
     if(sqlite.connect()){
-     sqlite.query( "SELECT * FROM Elev WHERE Navn LIKE '%W%'" );
-     while(sqlite.next()){
-       ScorePrint = sqlite.getString("Points");
-     }}
+    sqlite.query( "SELECT * FROM Elev WHERE Navn LIKE '%W%'" );
+    while(sqlite.next()){
+    ScorePrint = sqlite.getString("Points");}}
     fill(500,500,500);
      text(ScorePrint,400,400);
-    fill(36,109,120);
-  }
+    fill(36,109,120);}
   
   
     if(pageTeacher == 4){
     fill(100,100,100);
     e8 = guihand.lavKlik (500,500);
     e8.Tegn();
-    fill(36,109,120);
-  }
+    fill(36,109,120);}
+    
 }
 
 void mousePressed(){
